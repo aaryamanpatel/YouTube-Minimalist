@@ -30,11 +30,20 @@
                 }
             }
 
+            var metadataLineElements_2 = document.querySelectorAll('ytd-grid-video-renderer:not([rich-meta]) #metadata-line.ytd-grid-video-renderer');
+
+            if (metadataLineElements_2) {
+                for (var j = 0; j < metadataLineElements_2.length; j++) {
+                    var metadataLineElement_2 = metadataLineElements_2[j];
+                    metadataLineElement_2.style.display = 'none'; // Hide the entire metadata line
+                }
+            }
+
           console.log("Removed video length, views, and date metadata from thumbnails.");
 
           intervalRunning = false;
       }
-  }, 700); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
+  }, 200); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
 })();
 
 
