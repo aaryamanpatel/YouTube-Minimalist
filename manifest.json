@@ -5,14 +5,14 @@
   "description": "Remove video details from YouTube thumbnails on the homepage.",
   "permissions": ["activeTab", "tabs"],
   "icons": {
-    "48": "icon.jpg"
+    "48": "48icon.png"
   },
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icon.jpg",
-      "48": "icon.jpg",
-      "128": "icon.jpg"
+      "16": "16icon.png",
+      "48": "48icon.png",
+      "128": "128icon.png"
     },
     "default_title": "YouTube Thumbnail Customizer"
   },
