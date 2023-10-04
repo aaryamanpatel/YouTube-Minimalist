@@ -81,7 +81,7 @@ function injectCSSRules() {
     style.innerHTML = `
       /* Show loaded ytd-thumbnail with overlays */
       ytd-thumbnail[loaded="true"] #overlays.ytd-thumbnail {
-        display: block !important;
+        display: none !important;
       }
     `;
     document.head.appendChild(style);
@@ -90,10 +90,10 @@ function injectCSSRules() {
   // Execute the function when the page is loaded
   window.addEventListener("DOMContentLoaded", injectCSSRules);
   
-  // Execute the function when the page is loaded
-  window.addEventListener("DOMContentLoaded", removeVideoLength);
+//   // Execute the function when the page is loaded
+//   window.addEventListener("DOMContentLoaded", removeVideoLength);
 
-  removeVideoLength();
+//   removeVideoLength();
 
   alert("Removed video length from all thumbnails.")
   
