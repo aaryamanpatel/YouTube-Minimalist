@@ -76,24 +76,55 @@
 //     });
 //   }
 
-function injectCSSRules() {
-    const style = document.createElement("style");
-    style.innerHTML = `
-      /* Show loaded ytd-thumbnail with overlays */
-      ytd-thumbnail[loaded="true"] #overlays.ytd-thumbnail {
-        display: none !important;
-      }
-    `;
-    document.head.appendChild(style);
-  }
-  
-  // Execute the function when the page is loaded
-  window.addEventListener("DOMContentLoaded", injectCSSRules);
+//----------------------------------------------------------------------------------------------
+
+// function injectCSSRules() {
+//     const style = document.createElement("style");
+//     style.innerHTML = `
+//       /* Show loaded ytd-thumbnail with overlays */
+//       ytd-thumbnail[loaded="true"] #overlays.ytd-thumbnail {
+//         display: none !important;
+//       }
+//     `;
+//     document.head.appendChild(style);
+//   }
   
 //   // Execute the function when the page is loaded
-//   window.addEventListener("DOMContentLoaded", removeVideoLength);
-
-//   removeVideoLength();
-
-  alert("Removed video length from all thumbnails.")
+//   window.addEventListener("DOMContentLoaded", injectCSSRules);
   
+// //   // Execute the function when the page is loaded
+// //   window.addEventListener("DOMContentLoaded", removeVideoLength);
+
+// //   removeVideoLength();
+
+//   alert("Removed video length from all thumbnails.")
+
+
+(function() {
+  var url = window.location.href.toString().trim();
+  if (url.indexOf('youtube.com') == -1) {
+      return;
+  }
+
+  console.log("YouTube Thumbnail Time Remover Started");
+
+  var intervalRunning = false;
+  var interval = setInterval(function() {
+
+      if (intervalRunning == false) {
+          intervalRunning = true;
+
+          var thumbnailTimeElements = document.querySelectorAll('.style-scope.ytd-thumbnail-overlay-time-status-renderer');
+
+          if (thumbnailTimeElements) {
+              for (var i = 0; i < thumbnailTimeElements.length; i++) {
+                  var thumbnailTimeElement = thumbnailTimeElements[i];
+                  thumbnailTimeElement.style.display = 'none'; // Hide the time element
+              }
+              console.log("Removed video length from thumbnails.");
+          }
+
+          intervalRunning = false;
+      }
+  }, 1000); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
+})();
