@@ -4,12 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Thumbnail Customizer</title>
+    <style>
+        /* Style for the slider toggle */
+        .slider {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .slider input {
+            display: none;
+        }
+
+        .slider .slider-bg {
+            background-color: #ccc;
+            position: absolute;
+            cursor: pointer;
+            border-radius: 34px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: .4s;
+        }
+
+        .slider .slider-thumb {
+            background-color: #2196F3;
+            position: absolute;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            top: 4px;
+            left: 4px;
+            transition: .4s;
+        }
+
+        .slider input:checked + .slider-thumb {
+            transform: translateX(26px);
+        }
+
+        .slider input:checked + .slider-bg:before {
+            transform: translateX(26px);
+            size-adjust: 50%;
+        }
+    </style>
 </head>
 <body>
     <h1>YouTube Thumbnail Customizer</h1>
-    <!-- <p>Extension settings:</p>
-    <label>
-        <input type="checkbox" id="toggleExtension" /> Enable Extension
-    </label> -->
+    <p>Extension settings:</p>
+    <label class="slider">
+        <input type="checkbox" id="toggleExtension" />
+        <span class="slider-bg"></span>
+        <span class="slider-thumb"></span>
+    </label>
+
+    <script src="popup.js"></script>
 </body>
 </html>

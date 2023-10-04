@@ -1,112 +1,10 @@
-// content.js
-// This script removes the video length from YouTube thumbnails.
-
-// Function to remove the video length from a single thumbnail
-// function removeVideoLength(thumbnail) {
-//     const videoLengthElement = thumbnail.querySelector(".ytd-thumbnail-overlay-time-status-renderer");
-//     if (videoLengthElement) {
-//       videoLengthElement.style.display = "none";
-//     }
-//   }
-  
-  // Function to remove the video length from all thumbnails on the page
-//   function removeVideoLengthFromAllThumbnails() {
-//     const thumbnails = document.querySelectorAll("#time-status");
-//     thumbnails.forEach((thumbnail) => {
-//         thumbnail.style.display = "none";
-//     });
-//     console.log("Removed video length from all thumbnails.");
-//   }
-  
-//   // Execute the function when the page is loaded
-//   window.addEventListener("DOMContentLoaded", removeVideoLengthFromAllThumbnails);
-
-//   const thumbnails = document.querySelectorAll("#time-status");
-
-//   thumbnails.forEach((thumbnail) => {
-//       thumbnail.style.display = "none";
-//       console.log("Removed video length from all thumbnails.");
-//   });
-
-// function removeTime (){
-
-//     const thumbnails = document.querySelectorAll("#time-status");
-
-//     thumbnails.forEach((thumbnail) => {
-//         thumbnail.style.display = "none";
-//         console.log("Removed video length from all thumbnails.");
-//     });
-// }
-
-// window.addEventListener("DOMContentLoaded", removeTime);
-
-
-
-// Function to hide video length from all thumbnails
-// function hideVideoLength() {
-//     const thumbnails = document.querySelectorAll(".ytd-thumbnail-overlay-time-status-renderer");
-//     thumbnails.forEach((thumbnail) => {
-//       thumbnail.style.display = "none";
-//     });
-//   }
-  
-//   // Execute the function when the page is loaded
-//   window.addEventListener("load", hideVideoLength);
-  
-//   console.log("Removed video length from all thumbnails.");
-
-  // content.js
-// This script removes the video length from YouTube thumbnails.
-
-// function removeVideoLength() {
-//     // const videoLengthElements = document.querySelectorAll(".style-scope.ytd-thumbnail-overlay-time-status-renderer");
-    
-//     // videoLengthElements.forEach((videoLengthElement) => {
-//     //   videoLengthElement.style.display = "none !important";
-//     // });
-//     // const videoLengthElements = document.querySelectorAll(".ytd-thumbnail-overlay-time-status-renderer");
-    
-//     // videoLengthElements.forEach((videoLengthElement) => {
-//     //   videoLengthElement.style.display = "none !important";
-//     // });
-//     const videoLengthElements = document.querySelectorAll("ytd-thumbnail[loaded] #overlays.ytd-thumbnail");
-    
-//     videoLengthElements.forEach((videoLengthElement) => {
-//       videoLengthElement.style.display = "none !important";
-//     });
-//   }
-
-//----------------------------------------------------------------------------------------------
-
-// function injectCSSRules() {
-//     const style = document.createElement("style");
-//     style.innerHTML = `
-//       /* Show loaded ytd-thumbnail with overlays */
-//       ytd-thumbnail[loaded="true"] #overlays.ytd-thumbnail {
-//         display: none !important;
-//       }
-//     `;
-//     document.head.appendChild(style);
-//   }
-  
-//   // Execute the function when the page is loaded
-//   window.addEventListener("DOMContentLoaded", injectCSSRules);
-  
-// //   // Execute the function when the page is loaded
-// //   window.addEventListener("DOMContentLoaded", removeVideoLength);
-
-// //   removeVideoLength();
-
-//   alert("Removed video length from all thumbnails.")
-
-
 (function() {
   var url = window.location.href.toString().trim();
   if (url.indexOf('youtube.com') == -1) {
       return;
   }
 
-  console.log("YouTube Thumbnail Time Remover Started");
+  console.log("YouTube Thumbnail Customizer Started");
 
   var intervalRunning = false;
   var interval = setInterval(function() {
@@ -114,17 +12,89 @@
       if (intervalRunning == false) {
           intervalRunning = true;
 
+          // Remove video length elements
           var thumbnailTimeElements = document.querySelectorAll('.style-scope.ytd-thumbnail-overlay-time-status-renderer');
-
           if (thumbnailTimeElements) {
               for (var i = 0; i < thumbnailTimeElements.length; i++) {
-                  var thumbnailTimeElement = thumbnailTimeElements[i];
-                  thumbnailTimeElement.style.display = 'none'; // Hide the time element
+                  thumbnailTimeElements[i].style.display = 'none'; // Hide the time element
               }
-              console.log("Removed video length from thumbnails.");
           }
+
+            // Remove video length, views, and date metadata elements
+            var metadataLineElements = document.querySelectorAll('ytd-video-meta-block[rich-meta] #metadata-line.ytd-video-meta-block');
+
+            if (metadataLineElements) {
+                for (var j = 0; j < metadataLineElements.length; j++) {
+                    var metadataLineElement = metadataLineElements[j];
+                    metadataLineElement.style.display = 'none'; // Hide the entire metadata line
+                }
+            }
+
+          console.log("Removed video length, views, and date metadata from thumbnails.");
 
           intervalRunning = false;
       }
-  }, 1000); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
+  }, 700); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
 })();
+
+
+// work on after:
+
+// var enabled = false;
+
+// function updateExtensionBehavior(){
+//   if (enabled) {
+//     (function() {
+//   var url = window.location.href.toString().trim();
+//   if (url.indexOf('youtube.com') == -1) {
+//       return;
+//   }
+
+//   console.log("YouTube Thumbnail Customizer Started");
+
+//   var intervalRunning = false;
+//   var interval = setInterval(function() {
+
+//       if (intervalRunning == false) {
+//           intervalRunning = true;
+
+//           // Remove video length elements
+//           var thumbnailTimeElements = document.querySelectorAll('.style-scope.ytd-thumbnail-overlay-time-status-renderer');
+//           if (thumbnailTimeElements) {
+//               for (var i = 0; i < thumbnailTimeElements.length; i++) {
+//                   thumbnailTimeElements[i].style.display = 'none'; // Hide the time element
+//               }
+//           }
+
+//             // Remove video length, views, and date metadata elements
+//             var metadataLineElements = document.querySelectorAll('ytd-video-meta-block[rich-meta] #metadata-line.ytd-video-meta-block');
+
+//             if (metadataLineElements) {
+//                 for (var j = 0; j < metadataLineElements.length; j++) {
+//                     var metadataLineElement = metadataLineElements[j];
+//                     metadataLineElement.style.display = 'none'; // Hide the entire metadata line
+//                 }
+//             }
+
+//           console.log("Removed video length, views, and date metadata from thumbnails.");
+
+//           intervalRunning = false;
+//       }
+//   }, 700); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
+// })();
+//   } else {
+//     clearInterval(interval);
+//   }
+// }
+
+// // Listen for messages from the popup script
+// chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+//   if (request.enableExtension !== undefined) {
+//       enabled = request.enableExtension;
+//       updateExtensionBehavior();
+//   }
+// });
+
+// // Initialize extension behavior based on the initial state (disabled by default)
+// updateExtensionBehavior();
+
