@@ -13,7 +13,7 @@ A simple Chrome Extension to remove video length, days, and view count from thum
 6. Voila! YouTube Minimalist is now installed on your browser
 
 
-**Examples:**
+## Examples
 
 ![image](https://github.com/aaryamanpatel/YouTube-extension/assets/73197939/e58f72e1-129a-405b-972a-3234385ba629)
 
