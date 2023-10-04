@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Thumbnail Customizer",
+  "name": "YouTube Minimalist",
   "version": "1.0",
   "description": "Remove video details from YouTube thumbnails on the homepage.",
   "permissions": ["activeTab", "tabs"],
@@ -14,7 +14,7 @@
       "48": "48icon.png",
       "128": "128icon.png"
     },
-    "default_title": "YouTube Thumbnail Customizer"
+    "default_title": "YouTube Minimalist"
   },
   "content_scripts": [
     {
