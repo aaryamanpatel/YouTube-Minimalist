@@ -1,34 +1,99 @@
-// // content.js
-// // This script injects CSS rules to hide specific elements on YouTube thumbnails.
+// content.js
+// This script removes the video length from YouTube thumbnails.
 
-// // Function to inject CSS rules to hide elements
-// function injectCSSRules() {
-//     const style = document.createElement("style");
-//     style.innerHTML = `
-//         ytd-video-meta-block[rich-meta] #metadata-line.ytd-video-meta-block {
-//             display: none !important;
-//         }
+// Function to remove the video length from a single thumbnail
+// function removeVideoLength(thumbnail) {
+//     const videoLengthElement = thumbnail.querySelector(".ytd-thumbnail-overlay-time-status-renderer");
+//     if (videoLengthElement) {
+//       videoLengthElement.style.display = "none";
+//     }
+//   }
+  
+  // Function to remove the video length from all thumbnails on the page
+//   function removeVideoLengthFromAllThumbnails() {
+//     const thumbnails = document.querySelectorAll("#time-status");
+//     thumbnails.forEach((thumbnail) => {
+//         thumbnail.style.display = "none";
+//     });
+//     console.log("Removed video length from all thumbnails.");
+//   }
+  
+//   // Execute the function when the page is loaded
+//   window.addEventListener("DOMContentLoaded", removeVideoLengthFromAllThumbnails);
 
-//         #time-status .ytd-thumbnail-overlay-time-status-renderer {
-//             display: none !important;
-//         }
+//   const thumbnails = document.querySelectorAll("#time-status");
 
-//         #thumbnail.ytd-thumbnail .ytd-thumbnail-overlay-time-status-renderer {
-//             display: none !important;
-//         }
+//   thumbnails.forEach((thumbnail) => {
+//       thumbnail.style.display = "none";
+//       console.log("Removed video length from all thumbnails.");
+//   });
 
-//         #thumbnail.ytd-thumbnail .ytd-thumbnail-overlay-time-status-renderer {
-//             bottom: 0 !important;
-//         }`;
-//     document.head.appendChild(style);
+// function removeTime (){
+
+//     const thumbnails = document.querySelectorAll("#time-status");
+
+//     thumbnails.forEach((thumbnail) => {
+//         thumbnail.style.display = "none";
+//         console.log("Removed video length from all thumbnails.");
+//     });
 // }
 
-// // Execute the function when the page is loaded
-// window.addEventListener("DOMContentLoaded", () => {
-//     console.log("YouTube Thumbnail Hider is running!");
-//     injectCSSRules();
-// });
+// window.addEventListener("DOMContentLoaded", removeTime);
 
-const videoLengthElements = document.querySelectorAll(".ytd-video-meta-duration");
 
-videoLengthElements.forEach(element => element.remove());
+
+// Function to hide video length from all thumbnails
+// function hideVideoLength() {
+//     const thumbnails = document.querySelectorAll(".ytd-thumbnail-overlay-time-status-renderer");
+//     thumbnails.forEach((thumbnail) => {
+//       thumbnail.style.display = "none";
+//     });
+//   }
+  
+//   // Execute the function when the page is loaded
+//   window.addEventListener("load", hideVideoLength);
+  
+//   console.log("Removed video length from all thumbnails.");
+
+  // content.js
+// This script removes the video length from YouTube thumbnails.
+
+// function removeVideoLength() {
+//     // const videoLengthElements = document.querySelectorAll(".style-scope.ytd-thumbnail-overlay-time-status-renderer");
+    
+//     // videoLengthElements.forEach((videoLengthElement) => {
+//     //   videoLengthElement.style.display = "none !important";
+//     // });
+//     // const videoLengthElements = document.querySelectorAll(".ytd-thumbnail-overlay-time-status-renderer");
+    
+//     // videoLengthElements.forEach((videoLengthElement) => {
+//     //   videoLengthElement.style.display = "none !important";
+//     // });
+//     const videoLengthElements = document.querySelectorAll("ytd-thumbnail[loaded] #overlays.ytd-thumbnail");
+    
+//     videoLengthElements.forEach((videoLengthElement) => {
+//       videoLengthElement.style.display = "none !important";
+//     });
+//   }
+
+function injectCSSRules() {
+    const style = document.createElement("style");
+    style.innerHTML = `
+      /* Show loaded ytd-thumbnail with overlays */
+      ytd-thumbnail[loaded="true"] #overlays.ytd-thumbnail {
+        display: block !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  // Execute the function when the page is loaded
+  window.addEventListener("DOMContentLoaded", injectCSSRules);
+  
+  // Execute the function when the page is loaded
+  window.addEventListener("DOMContentLoaded", removeVideoLength);
+
+  removeVideoLength();
+
+  alert("Removed video length from all thumbnails.")
+  

@@ -3,7 +3,6 @@
   "name": "YouTube Thumbnail Customizer",
   "version": "1.0",
   "description": "Remove video details from YouTube thumbnails on the homepage.",
-  "permissions": ["activeTab", "storage"],
   "icons": {
     "48": "icon.jpg"
   },
@@ -13,11 +12,12 @@
       "16": "icon.jpg",
       "48": "icon.jpg",
       "128": "icon.jpg"
-    }
+    },
+    "default_title": "YouTube Thumbnail Customizer"
   },
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/*"],
+      "matches": ["https://*.youtube.com/*"],
       "js": ["content.js"]
     }
   ]
