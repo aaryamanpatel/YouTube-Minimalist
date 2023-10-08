@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "YouTube Minimalist",
-  "version": "2.0",
-  "description": "Remove video details from YouTube thumbnails on the homepage.",
+  "version": "2.1",
+  "description": "Demtricates all YouTube Thumbnails",
   "permissions": ["activeTab"],
   "icons": {
     "48": "48icon.png"

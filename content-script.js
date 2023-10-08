@@ -39,11 +39,21 @@
                 }
             }
 
-          console.log("Removed video length, views, and date metadata from thumbnails.");
+            // Remove views and date uploaded from videos on the right
+            var metadataLineElements_3 = document.querySelectorAll('ytd-video-meta-block:not([rich-meta])[inline-badges] #metadata-line.ytd-video-meta-block');
+
+            if (metadataLineElements_3) {
+                for (var j = 0; j < metadataLineElements_3.length; j++) {
+                    var metadataLineElement_3 = metadataLineElements_3[j];
+                    metadataLineElement_3.style.display = 'none'; // Hide the entire metadata line
+                }
+            }
+
+        //   console.log("Removed video length, views, and date metadata from thumbnails.");
 
           intervalRunning = false;
       }
-  }, 200); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
+  }, 50); // Adjust the interval as needed (e.g., 1000 milliseconds for 1 second)
 })();
 
 
